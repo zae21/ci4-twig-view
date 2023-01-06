@@ -81,8 +81,9 @@ defined('EXIT__AUTO_MAX')      || define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 // get curent url
-$url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
-$url .= "://" . $_SERVER['HTTP_HOST'];
-$url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+// $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http");
+// $url .= "://" . $_SERVER['HTTP_HOST'];
+// $url .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERVER['SCRIPT_NAME']);
+$url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off'  ? 'https://'.$_SERVER['HTTP_HOST'] : 'http://') . $_SERVER['HTTP_HOST'] . dirname($_SERVER['SCRIPT_NAME']) . '/';
 // defint contant url
 defined('BASE_URL')            || define('BASE_URL', $url);
